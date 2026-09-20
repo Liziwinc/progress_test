@@ -24,7 +24,3 @@ animateInput.addEventListener("change", () => {
 hideInput.addEventListener("change", () => {
   progress.setHidden(hideInput.checked);
 });
-
-console.log(progress.getValue());
-console.log(progress.isAnimated());
-console.log(progress.isHidden());

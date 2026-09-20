@@ -2,20 +2,20 @@ const SVG_NS = "http://www.w3.org/2000/svg";
 
 export class Progress {
   constructor(container) {
-  if (!(container instanceof HTMLElement)) {
-    throw new Error('Progress: container must be an HTML element');
+    if (!(container instanceof HTMLElement)) {
+      throw new Error("Progress: container must be an HTML element");
+    }
+
+    this.container = container;
+
+    this.state = {
+      value: 0,
+      animated: false,
+      hidden: false,
+    };
+
+    this._createMarkup();
   }
-
-  this.container = container;
-
-  this.state = {
-    value: 0,
-    animated: false,
-    hidden: false,
-  };
-
-  this._createMarkup();
-}
 
   _createMarkup() {
     const svg = document.createElementNS(SVG_NS, "svg");
@@ -51,19 +51,19 @@ export class Progress {
   }
 
   setValue(value) {
-  if (value === '' || value === null || value === undefined) {
-    return;
+    if (value === "" || value === null || value === undefined) {
+      return;
+    }
+
+    value = Number(value);
+
+    if (!Number.isFinite(value)) {
+      return;
+    }
+
+    this.state.value = Math.min(100, Math.max(0, value));
+    this._updateValue();
   }
-
-  value = Number(value);
-
-  if (!Number.isFinite(value)) {
-    return;
-  }
-
-  this.state.value = Math.min(100, Math.max(0, value));
-  this._updateValue();
-}
 
   setAnimated(animated) {
     this.state.animated = animated === true;
@@ -92,16 +92,15 @@ export class Progress {
     this.container.hidden = this.state.hidden;
   }
 
-
   getValue() {
-  return this.state.value;
-}
+    return this.state.value;
+  }
 
-isAnimated() {
-  return this.state.animated;
-}
+  isAnimated() {
+    return this.state.animated;
+  }
 
-isHidden() {
-  return this.state.hidden;
-}
+  isHidden() {
+    return this.state.hidden;
+  }
 }
