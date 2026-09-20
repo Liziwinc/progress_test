@@ -4,39 +4,69 @@
 
 html,
 body {
-  margin: 0;
+  width: 100%;
   min-height: 100%;
+  margin: 0;
 }
 
 body {
   font-family: Arial, sans-serif;
+  background: #ffffff;
+  color: #000000;
 }
 
 .app {
+  width: 100%;
   min-height: 100vh;
-  padding: 24px;
+  padding: 16px;
+
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: auto auto;
+  align-content: center;
+  justify-items: center;
+
+  gap: 56px;
+}
+
+.demo {
+  width: 100%;
+  max-width: 320px;
 
   display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 48px;
+  flex-direction: column;
+  align-items: flex-start;
+
+  gap: 36px;
+}
+
+.demo__title {
+  margin: 0;
+
+  font-size: 12px;
+  line-height: 1;
+  font-weight: 400;
 }
 
 .progress {
-  width: 80px;
-  aspect-ratio: 1;
+  width: 72px;
+  height: 72px;
+
+  align-self: center;
+
   flex-shrink: 0;
 }
 
 .progress svg {
   display: block;
+
   width: 100%;
   height: 100%;
 }
 
 .progress__circle {
   fill: none;
-  stroke-width: 8;
+  stroke-width: 14;
 }
 
 .progress__circle--background {
@@ -45,8 +75,9 @@ body {
 
 .progress__circle--value {
   stroke: #1464f4;
+
   transform: rotate(-90deg);
-  transform-origin: center;
+  transform-origin: 50% 50%;
 }
 
 .progress__circle--animated {
@@ -64,61 +95,92 @@ body {
 }
 
 .controls {
+  width: 120px;
+
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  min-width: 120px;
+  gap: 10px;
 }
 
 .control {
+  width: 100%;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 18px;
+
+  gap: 12px;
 
   font-size: 12px;
+  line-height: 1;
 }
 
 .control__input {
-  width: 40px;
-  height: 24px;
+  width: 34px;
+  height: 22px;
 
-  padding: 0 6px;
+  margin: 0;
+  padding: 0 4px;
 
   border: 1px solid #bfc5cc;
-  border-radius: 12px;
+  border-radius: 11px;
 
-  font: inherit;
-  font-size: 12px;
+  background: #ffffff;
+
+  color: #000000;
+
+  font-family: inherit;
+  font-size: 10px;
+  line-height: 1;
+
   text-align: center;
 
   outline: none;
+
+  appearance: textfield;
 }
 
-@media (orientation: portrait) {
-  .app {
-    flex-direction: column;
-    gap: 40px;
-  }
+.control__input:focus {
+  border-color: #1464f4;
+}
+
+.control__input::-webkit-inner-spin-button,
+.control__input::-webkit-outer-spin-button {
+  margin: 0;
+
+  appearance: none;
 }
 
 .switch {
   position: relative;
-  width: 50px;
-  height: 30px;
+
+  width: 30px;
+  height: 20px;
+
   flex-shrink: 0;
 }
 
 .switch__input {
   position: absolute;
+
   width: 1px;
   height: 1px;
-  opacity: 0;
+
+  margin: -1px;
+  padding: 0;
+
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+
+  border: 0;
 }
 
 .switch__slider {
   position: absolute;
   inset: 0;
+
+  display: block;
 
   background: #e5e5e5;
   border-radius: 999px;
@@ -132,16 +194,17 @@ body {
   content: "";
 
   position: absolute;
-  top: 3px;
-  left: 3px;
 
-  width: 24px;
-  height: 24px;
+  top: 2px;
+  left: 2px;
+
+  width: 16px;
+  height: 16px;
 
   background: #ffffff;
   border-radius: 50%;
 
-  box-shadow: 0 1px 4px rgb(0 0 0 / 20%);
+  box-shadow: 0 1px 3px rgb(0 0 0 / 20%);
 
   transition: transform 0.2s ease;
 }
@@ -151,7 +214,7 @@ body {
 }
 
 .switch__input:checked + .switch__slider::before {
-  transform: translateX(20px);
+  transform: translateX(10px);
 }
 
 .switch__input:focus-visible + .switch__slider {
@@ -159,15 +222,57 @@ body {
   outline-offset: 3px;
 }
 
-.demo {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  align-items: center;
+@media (orientation: landscape) {
+  .app {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-rows: 1fr;
+
+    align-items: center;
+    justify-items: center;
+
+    gap: 0;
+  }
+
+  .demo {
+    width: 100%;
+    max-width: 180px;
+
+    align-self: stretch;
+
+    padding-top: 16px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    gap: 36px;
+  }
+
+  .demo__title {
+    align-self: flex-start;
+  }
+
+  .progress {
+    align-self: center;
+  }
+
+  .controls {
+    width: 120px;
+  }
 }
 
-.demo__title {
-  margin: 0;
-  font-size: 14px;
-  font-weight: 400;
+@media (max-width: 320px) {
+  .app {
+    padding: 12px;
+    gap: 44px;
+  }
+
+  .demo {
+    gap: 32px;
+  }
+
+  .progress {
+    width: 68px;
+    height: 68px;
+  }
 }

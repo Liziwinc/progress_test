@@ -14,7 +14,13 @@ progress.setAnimated(animateInput.checked);
 progress.setHidden(hideInput.checked);
 
 valueInput.addEventListener("input", () => {
-  progress.setValue(valueInput.value);
+  if (valueInput.value === "") {
+    return;
+  }
+
+  const value = progress.setValue(valueInput.value);
+
+  valueInput.value = value;
 });
 
 animateInput.addEventListener("change", () => {

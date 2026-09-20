@@ -51,19 +51,22 @@ export class Progress {
   }
 
   setValue(value) {
-    if (value === "" || value === null || value === undefined) {
-      return;
-    }
-
-    value = Number(value);
-
-    if (!Number.isFinite(value)) {
-      return;
-    }
-
-    this.state.value = Math.min(100, Math.max(0, value));
-    this._updateValue();
+  if (value === '' || value === null || value === undefined) {
+    return this.state.value;
   }
+
+  value = Number(value);
+
+  if (!Number.isFinite(value)) {
+    return this.state.value;
+  }
+
+  this.state.value = Math.min(100, Math.max(0, value));
+
+  this._updateValue();
+
+  return this.state.value;
+}
 
   setAnimated(animated) {
     this.state.animated = animated === true;
