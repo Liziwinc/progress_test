@@ -19,8 +19,17 @@ valueInput.addEventListener("input", () => {
   }
 
   const value = progress.setValue(valueInput.value);
+  if (Number(valueInput.value) > 100) {
+    valueInput.value = value;
+  }
+});
 
-  valueInput.value = value;
+valueInput.addEventListener("blur", () => {
+  if (valueInput.value === "") {
+    valueInput.value = progress.getValue();
+  } else {
+    valueInput.value = progress.setValue(valueInput.value);
+  }
 });
 
 animateInput.addEventListener("change", () => {

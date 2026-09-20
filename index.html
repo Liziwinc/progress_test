@@ -4,17 +4,17 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Progress</title>
+    <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
     <main class="app">
       <section class="demo">
         <h1 class="demo__title">Progress</h1>
-
         <div class="progress"></div>
       </section>
+
       <div class="controls">
         <label class="control">
-          <span>Value</span>
           <input
             id="value"
             class="control__input"
@@ -23,28 +23,27 @@
             max="100"
             value="50"
           />
+          <span class="control__label">Value</span>
         </label>
 
         <label class="control">
-          <span>Animate</span>
-
           <span class="switch">
             <input id="animate" class="switch__input" type="checkbox" />
             <span class="switch__slider"></span>
           </span>
+          <span class="control__label">Animate</span>
         </label>
 
         <label class="control">
-          <span>Hide</span>
-
           <span class="switch">
             <input id="hide" class="switch__input" type="checkbox" />
             <span class="switch__slider"></span>
           </span>
+          <span class="control__label">Hide</span>
         </label>
       </div>
     </main>
 
-    <script type="module" src="/src/main.js"></script>
+    <script type="module" src="./src/main.js"></script>
   </body>
 </html>
