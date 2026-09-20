@@ -11,7 +11,9 @@ body {
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
+    sans-serif;
   background: #ffffff;
   color: #000000;
   -webkit-font-smoothing: antialiased;
@@ -175,7 +177,9 @@ body {
   border: 1px solid #c2c9d1;
   border-radius: 999px;
   cursor: pointer;
-  transition: background-color 0.2s ease, border-color 0.2s ease;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease;
 }
 
 .switch__slider::before {
@@ -207,19 +211,40 @@ body {
 @media (orientation: landscape) {
   .app {
     flex-direction: row;
+
+    width: 100%;
+    max-width: 568px;
+
+    height: 100vh;
+    max-height: 320px;
+
     padding: 20px 24px;
   }
 
   .demo {
     width: 50%;
     height: 100%;
+
     justify-content: center;
   }
 
   .controls {
     width: 50%;
-    margin: 0;
+
     align-items: center;
     justify-content: center;
   }
+}
+
+body {
+  min-height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.app {
+  max-width: 320px;
+  max-height: 568px;
 }

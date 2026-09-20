@@ -29,7 +29,7 @@ export class Progress {
     backgroundCircle.setAttribute("r", String(RADIUS));
     backgroundCircle.classList.add(
       "progress__circle",
-      "progress__circle--background"
+      "progress__circle--background",
     );
 
     const valueCircle = document.createElementNS(SVG_NS, "circle");
@@ -67,12 +67,12 @@ export class Progress {
   }
 
   setAnimated(animated) {
-    this.state.animated = Boolean(animated);
+    this.state.animated = animated === true;
     this._updateAnimated();
   }
 
   setHidden(hidden) {
-    this.state.hidden = Boolean(hidden);
+    this.state.hidden = hidden === true;
     this._updateHidden();
   }
 
@@ -84,7 +84,7 @@ export class Progress {
   _updateAnimated() {
     this.valueCircle.classList.toggle(
       "progress__circle--animated",
-      this.state.animated
+      this.state.animated,
     );
   }
 
