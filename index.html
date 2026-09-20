@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Progress</title>
+  </head>
+  <body>
+    <main class="app">
+      <div class="progress"></div>
+
+      <div class="controls">
+        <label class="control">
+          <span>Value</span>
+          <input
+            id="value"
+            class="control__input"
+            type="number"
+            min="0"
+            max="100"
+            value="50"
+          />
+        </label>
+
+        <label class="control">
+          <span>Animate</span>
+          <input id="animate" class="control__switch" type="checkbox" />
+        </label>
+
+        <label class="control">
+          <span>Hide</span>
+          <input id="hide" class="control__switch" type="checkbox" />
+        </label>
+      </div>
+    </main>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
