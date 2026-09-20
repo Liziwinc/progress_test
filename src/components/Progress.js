@@ -2,16 +2,20 @@ const SVG_NS = "http://www.w3.org/2000/svg";
 
 export class Progress {
   constructor(container) {
-    this.container = container;
-
-    this.state = {
-      value: 0,
-      animated: false,
-      hidden: false,
-    };
-
-    this._createMarkup();
+  if (!(container instanceof HTMLElement)) {
+    throw new Error('Progress: container must be an HTML element');
   }
+
+  this.container = container;
+
+  this.state = {
+    value: 0,
+    animated: false,
+    hidden: false,
+  };
+
+  this._createMarkup();
+}
 
   _createMarkup() {
     const svg = document.createElementNS(SVG_NS, "svg");
@@ -47,25 +51,29 @@ export class Progress {
   }
 
   setValue(value) {
-    value = Number(value);
-
-    if (!Number.isFinite(value)) {
-      return;
-    }
-
-    this.state.value = Math.min(100, Math.max(0, value));
-    this._updateValue();
+  if (value === '' || value === null || value === undefined) {
+    return;
   }
 
-setAnimated(animated) {
-  this.state.animated = animated === true;
-  this._updateAnimated();
+  value = Number(value);
+
+  if (!Number.isFinite(value)) {
+    return;
+  }
+
+  this.state.value = Math.min(100, Math.max(0, value));
+  this._updateValue();
 }
 
-setHidden(hidden) {
-  this.state.hidden = hidden === true;
-  this._updateHidden();
-}
+  setAnimated(animated) {
+    this.state.animated = animated === true;
+    this._updateAnimated();
+  }
+
+  setHidden(hidden) {
+    this.state.hidden = hidden === true;
+    this._updateHidden();
+  }
 
   _updateValue() {
     const offset = this.circumference * (1 - this.state.value / 100);
@@ -83,4 +91,17 @@ setHidden(hidden) {
   _updateHidden() {
     this.container.hidden = this.state.hidden;
   }
+
+
+  getValue() {
+  return this.state.value;
+}
+
+isAnimated() {
+  return this.state.animated;
+}
+
+isHidden() {
+  return this.state.hidden;
+}
 }

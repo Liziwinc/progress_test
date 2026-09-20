@@ -24,7 +24,7 @@ body {
 
 .progress {
   width: 80px;
-  height: 80px;
+  aspect-ratio: 1;
   flex-shrink: 0;
 }
 
@@ -80,16 +80,16 @@ body {
 }
 
 .control__input {
-  width: 30px;
-  height: 20px;
+  width: 40px;
+  height: 24px;
 
-  padding: 0 5px;
+  padding: 0 6px;
 
   border: 1px solid #bfc5cc;
-  border-radius: 10px;
+  border-radius: 12px;
 
   font: inherit;
-  font-size: 10px;
+  font-size: 12px;
   text-align: center;
 
   outline: none;
@@ -147,7 +147,7 @@ body {
 }
 
 .switch__input:checked + .switch__slider {
-  background: #000000;
+  background: #1464f4;
 }
 
 .switch__input:checked + .switch__slider::before {
@@ -155,14 +155,15 @@ body {
 }
 
 .switch__input:focus-visible + .switch__slider {
-  outline: 2px solid #000000;
+  outline: 2px solid #1464f4;
   outline-offset: 3px;
 }
 
 .demo {
   display: flex;
   flex-direction: column;
-  gap: 38px;
+  gap: 20px;
+  align-items: center;
 }
 
 .demo__title {
